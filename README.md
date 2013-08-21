@@ -9,8 +9,9 @@ KeepTxt runs from the command line and calling it with one argument, a note name
 
 To install KeepTxt:
 
-    wget 
-    cd 
+    wget https://github.com/getdual/KeepTxt/archive/master.zip
+    unzip master.zip
+    cd KeepTxt-master
     chmod +x install.sh
     ./install.sh
 
