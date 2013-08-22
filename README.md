@@ -17,3 +17,5 @@ To install KeepTxt:
 Answer a question and move keeptxt within your path if you don't install it for all users.
 
 Please contact me at @getdual with bugs and suggestions.
+
+**- dual**
