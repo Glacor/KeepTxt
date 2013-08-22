@@ -37,13 +37,17 @@ attach()
 {
     header
     file="$1"
+    currentDir=$(pwd)
     echo "Available Notes"
     echo "---------------"
-    for i in $(ls "$notebook"); do
+    cd "$notebook"
+    for i in *; do
         echo "$i"
     done
+    cd $currentDir
     echo
-    read -p "Which note do you want to attach the file to? " note
+    read -p "Which note do you want to attach the file to? " noteWquotes
+    note=$(echo "$noteWquotes" | sed 's/"//g')
     [ -d "$notebook/$note" ] || {
         echo "Note '$note' not found... exiting."
         exit 1
@@ -88,22 +92,9 @@ empty()
     fi
 }
 
-help()
+options()
 {
-cat <<EndHelp
-KeepTxt is a command line note taking app inspired by KeepNote and todo.txt.
-
-Usage: keeptxt [NOTE]
-       keeptxt [-adehlopsx]
-
-Run keeptxt with a note name and without a switch to create a new, or edit an
-existing, note. For example:
-
-  $ keeptxt todo
-  $ keeptxt "Army List"
-
-Use the following switches to act upon notes and attachments.
-
+cat <<EndOpts
   -a FILE
       Attach a file to a note
   -d NOTE
@@ -111,7 +102,7 @@ Use the following switches to act upon notes and attachments.
   -e
       Empty trash of deleted notes
   -h
-      This help
+      This help message
   -l
       List notes and attachments
   -o NOTE
@@ -119,20 +110,63 @@ Use the following switches to act upon notes and attachments.
   -p
       Print all notes (e.g. keeptxt -p | lp to create a hardcopy backup)
   -s
-      Save attachment from note to disk
+      Save an attachment from note to disk
   -x
       Export notebook
+EndOpts
+}
+
+longHelp()
+{
+cat <<EndHelp
+KeepTxt is a command line note taking app inspired by KeepNote and todo.txt.
+
+Usage: keeptxt [NOTE]
+       keeptxt [-adehlopsx]
+
+Run keeptxt with no options and a note name to create a new, or edit an
+existing, note. For example:
+
+  $ keeptxt todo
+  $ keeptxt "Army List"
+
+Use the following options to act upon notes and attachments.
+
 EndHelp
+
+options
+}
+
+shortHelp()
+{
+    echo "Usage: keeptxt [NOTE]"
+    echo "       keeptxt [-adehlopsx]"
+    echo
+    options
 }
 
 list()
 {
     header
-    for i in $(ls "$notebook"); do
-        echo "[ $i ]"
-        ls "$notebook/$i"
-        echo
+    cd "$notebook"
+    echo "Notes"
+    echo "-----"
+    for i in *; do
+        echo "$i"
     done
+    echo
+    echo
+    echo "Attachments"
+    echo "-----------"
+    for i in *; do
+        cd "$notebook/$i"
+        for j in *; do
+            if [ "$j" != "$i.txt" ]; then
+                echo "$i/$j"
+            fi
+        done
+    done
+    echo
     echo "Listing complete."
     exit 0
 }
@@ -155,7 +189,8 @@ print()
 {
     echo
     echo
-    for i in $(ls "$notebook"); do
+    cd "$notebook"
+    for i in *; do
         echo "[ $i ]"
         if [ -e "$notebook/$i/$i.txt" ]; then
             cat "$notebook/$i/$i.txt"
@@ -231,9 +266,9 @@ newEdit()
     echo "Created note '$newNote'."
 }
 
-# Help if no args
+# Short help if no args
 if [ $# -eq 0 ]; then
-    help
+    shortHelp
     exit 1
 fi
 
@@ -242,7 +277,7 @@ while getopts ":a:d:ehlo:psx" opt; do
         a ) attach "$OPTARG";;
         d ) delete "$OPTARG";;
         e ) empty;;
-        h ) help
+        h ) longHelp
             exit 0;;
         l ) list;;
         o ) output "$OPTARG";;
@@ -251,11 +286,11 @@ while getopts ":a:d:ehlo:psx" opt; do
         x ) xport;;
         \? ) echo "Invalid option: -$OPTARG"
             echo
-            help
+            shortHelp
             exit 1;;
         : ) echo "Option -$OPTARG requires an argument."
             echo
-            help
+            shortHelp
             exit 1;;
     esac
 done
