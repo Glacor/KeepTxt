@@ -33,6 +33,59 @@ header()
     echo
 }
 
+options()
+{
+cat <<EndOpts
+  -a FILE
+      Attach a file to a note
+  -d NOTE
+      Delete a note and its attachments
+  -e
+      Empty trash of deleted notes
+  -h
+      This help message
+  -l
+      List notes and attachments
+  -o NOTE
+      Output a note to the terminal
+  -p
+      Print all notes (e.g. keeptxt -p | lp to create a hardcopy backup)
+  -s
+      Save an attachment from note to disk
+  -x
+      Export notebook
+EndOpts
+}
+
+longHelp()
+{
+cat <<EndHelp
+KeepTxt is a command line note taking app inspired by KeepNote and todo.txt.
+
+Usage: keeptxt [NOTE]
+       keeptxt [-adehlopsx]
+
+Run keeptxt with no options and a note name to create a new, or edit an
+existing, note. For example:
+
+  $ keeptxt todo
+  $ keeptxt "Army List"
+
+Use the following options to act upon notes and attachments.
+
+EndHelp
+
+options
+}
+
+shortHelp()
+{
+    echo "Usage: keeptxt [NOTE]"
+    echo "       keeptxt [-adehlopsx]"
+    echo
+    options
+}
+
 attach()
 {
     header
@@ -90,59 +143,6 @@ empty()
         echo "Trash not emptied."
         exit 0
     fi
-}
-
-options()
-{
-cat <<EndOpts
-  -a FILE
-      Attach a file to a note
-  -d NOTE
-      Delete a note and its attachments
-  -e
-      Empty trash of deleted notes
-  -h
-      This help message
-  -l
-      List notes and attachments
-  -o NOTE
-      Output a note to the terminal
-  -p
-      Print all notes (e.g. keeptxt -p | lp to create a hardcopy backup)
-  -s
-      Save an attachment from note to disk
-  -x
-      Export notebook
-EndOpts
-}
-
-longHelp()
-{
-cat <<EndHelp
-KeepTxt is a command line note taking app inspired by KeepNote and todo.txt.
-
-Usage: keeptxt [NOTE]
-       keeptxt [-adehlopsx]
-
-Run keeptxt with no options and a note name to create a new, or edit an
-existing, note. For example:
-
-  $ keeptxt todo
-  $ keeptxt "Army List"
-
-Use the following options to act upon notes and attachments.
-
-EndHelp
-
-options
-}
-
-shortHelp()
-{
-    echo "Usage: keeptxt [NOTE]"
-    echo "       keeptxt [-adehlopsx]"
-    echo
-    options
 }
 
 list()

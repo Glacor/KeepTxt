@@ -1,5 +1,4 @@
-KeepTxt
-=======
+**KeepTxt**
 
 KeepTxt is a command line note taking app inspired by KeepNote and todo.txt.
 
