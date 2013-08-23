@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# KeepTxt - A command line note taking app inspired by KeepNote and todo.txt
+# KeepTxt - A command line note taking app
 # by dual
 
 # Define KeepTxt conf directory
@@ -60,7 +60,7 @@ EndOpts
 longHelp()
 {
 cat <<EndHelp
-KeepTxt is a command line note taking app inspired by KeepNote and todo.txt.
+KeepTxt is a command line note taking app for systems with GNU Bash.
 
 Usage: keeptxt [NOTE]
        keeptxt [-adehlopsx]
