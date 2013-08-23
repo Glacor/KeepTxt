@@ -65,7 +65,7 @@ KeepTxt is a command line note taking app inspired by KeepNote and todo.txt.
 Usage: keeptxt [NOTE]
        keeptxt [-adehlopsx]
 
-Run keeptxt with no options and a note name to create a new, or edit an
+Run keeptxt with no options and a note name to create a new, or edit the
 existing, note. For example:
 
   $ keeptxt todo

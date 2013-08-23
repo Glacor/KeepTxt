@@ -1,8 +1,8 @@
 **KeepTxt**
 
-KeepTxt is a command line note taking app inspired by KeepNote and todo.txt.
+KeepTxt is a command line note taking app for systems with [GNU Bash](https://www.gnu.org/software/bash/).
 
-A little background, I was using Evernote and I decided to take my notes off the cloud. I moved to KeepNote, but I wanted a notes app with command line performance and simplicity. I looked to todo.txt from Gina Trapani as inspiration and started to write my own.
+A little background, I decided to removee my notes from the cloud. I moved to a GUI app on Linux but wanted a notes app with command line performance and simplicity. I looked to [Todo.txt](http://todotxt.com/) from Gina Trapani as inspiration and wrote my own.
 
 KeepTxt runs from the command line and calling it with one argument, a note name, edits the exisiting note or creates a new one. Run keeptxt -h to see the other options.
 
