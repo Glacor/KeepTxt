@@ -43,13 +43,15 @@ cat <<EndOpts
   -e
       Empty trash of deleted notes
   -h
-      This help message
+      Help message
   -l
       List notes and attachments
   -o NOTE
       Output a note to the terminal
   -p
       Print all notes (e.g. keeptxt -p | lp to create a hardcopy backup)
+  -r NOTE
+      Rename a note
   -s
       Save an attachment from note to disk
   -x
@@ -207,6 +209,24 @@ print()
     exit 0
 }
 
+rename()
+{
+    header
+    note="$1"
+    cd "$notebook"
+    [ -d "$note" ] || {
+        echo "Note '$note' does not exist... exiting."
+        exit 1
+    }
+    read -p "What is the note's new name? " newName
+    if [ -e "$note/$note.txt" ]; then
+        mv -i "$note/$note.txt" "$note/$newName.txt"
+    fi
+    mv "$note" "$newName"
+    echo "Note '$note' renamed to '$newName'."
+    exit 0
+}
+
 save()
 {
     header
@@ -272,7 +292,7 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-while getopts ":a:d:ehlo:psx" opt; do
+while getopts ":a:d:ehlo:pr:sx" opt; do
     case $opt in
         a ) attach "$OPTARG";;
         d ) delete "$OPTARG";;
@@ -282,6 +302,7 @@ while getopts ":a:d:ehlo:psx" opt; do
         l ) list;;
         o ) output "$OPTARG";;
         p ) print;;
+        r ) rename "$OPTARG";;
         s ) save;;
         x ) xport;;
         \? ) echo "Invalid option: -$OPTARG"
