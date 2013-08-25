@@ -8,12 +8,12 @@ keeptxtConf=$HOME/.keeptxt
 
 # Source iso8601 and keeptxt.conf
 [ -e $keeptxtConf/iso8601 ] || {
-    echo "$HOME/.keeptxt/iso8601 not found... exiting."
+    echo "$keeptxtConf/iso8601 not found... exiting."
     exit 1
 }
 
 [ -e $keeptxtConf/keeptxt.conf ] || {
-    echo "$HOME/.keeptxt/keeptxt.conf not found... exiting."
+    echo "$keeptxtConf/keeptxt.conf not found... exiting."
     exit 1
 }
 
@@ -269,21 +269,21 @@ xport()
 newEdit()
 {
     header
-    newNote="$1"
+    note="$1"
 
     # Edit existing note
-    if [ -e "$notebook/$newNote/$newNote.txt" ]; then
-        nano "$notebook/$newNote/$newNote.txt"
-        echo "Edited note '$newNote'."
+    if [ -e "$notebook/$note/$note.txt" ]; then
+        nano "$notebook/$note/$note.txt"
+        echo "Edited note '$note'."
         exit 0
     fi
 
     # Create note dir if it doesn't exist
-    [ -d "$notebook/$newNote" ] || {
-        mkdir "$notebook/$newNote"
+    [ -d "$notebook/$note" ] || {
+        mkdir "$notebook/$note"
     }
-    nano "$notebook/$newNote/$newNote.txt"
-    echo "Created note '$newNote'."
+    nano "$notebook/$note/$note.txt"
+    echo "Created note '$note'."
 }
 
 # Short help if no args
