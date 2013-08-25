@@ -29,6 +29,7 @@ keeptxtConf=$HOME/.keeptxt
 # Functions
 header()
 {
+    echo
     echo "Starting KeepTxt ( https://github.com/getdual/KeepTxt ) at $isoTime"
     echo
 }
@@ -42,6 +43,8 @@ cat <<EndOpts
       Delete a note and its attachments
   -e
       Empty trash of deleted notes
+  -g STRING
+      Grep (search) for string in notes
   -h
       Help message
   -l
@@ -56,13 +59,15 @@ cat <<EndOpts
       Save an attachment from note to disk
   -x
       Export notebook
+
 EndOpts
 }
 
 longHelp()
 {
 cat <<EndHelp
-KeepTxt is a command line note taking app for systems with GNU Bash.
+
+KeepTxt is a command line note taking app.
 
 Usage: keeptxt [NOTE]
        keeptxt [-adehlopsx]
@@ -70,8 +75,8 @@ Usage: keeptxt [NOTE]
 Run keeptxt with no options and a note name to create a new, or edit the
 existing, note. For example:
 
-  $ keeptxt todo
-  $ keeptxt "Army List"
+  keeptxt todo
+  keeptxt "Army List"
 
 Use the following options to act upon notes and attachments.
 
@@ -82,6 +87,7 @@ options
 
 shortHelp()
 {
+    echo
     echo "Usage: keeptxt [NOTE]"
     echo "       keeptxt [-adehlopsx]"
     echo
@@ -145,6 +151,19 @@ empty()
         echo "Trash not emptied."
         exit 0
     fi
+}
+
+grepNote()
+{
+    header
+    string="$1"
+    cd "$notebook"
+    for i in *; do
+        grep "$string" "$i/$i.txt"
+    done
+    echo
+    echo "Search for '$string' complete."
+    exit 0
 }
 
 list()
@@ -292,11 +311,12 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-while getopts ":a:d:ehlo:pr:sx" opt; do
+while getopts ":a:d:eg:hlo:pr:sx" opt; do
     case $opt in
         a ) attach "$OPTARG";;
         d ) delete "$OPTARG";;
         e ) empty;;
+        g ) grepNote "$OPTARG";;
         h ) longHelp
             exit 0;;
         l ) list;;
