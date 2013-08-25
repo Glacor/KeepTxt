@@ -19,7 +19,12 @@ Answer two questions and the installer creates a notebook in your home directory
 
 **Usage**
 
-KeepTxt runs from the command line and calling it with one argument, a note name, edits the exisiting note or creates a new one. Run keeptxt -h to see the other options.
+KeepTxt runs from the command line and calling it with one argument, a note name, edits the exisiting note or creates a new one.
+
+    keeptxt todo
+    keeptxt "Army List"
+
+Run keeptxt -h to see the other options.
 
 **Productivity Tips**
 
