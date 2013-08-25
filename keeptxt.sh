@@ -49,7 +49,7 @@ cat <<EndOpts
   -o NOTE
       Output a note to the terminal
   -p
-      Print all notes (e.g. keeptxt -p | lp to create a hardcopy backup)
+      Print all notes
   -r NOTE
       Rename a note
   -s
