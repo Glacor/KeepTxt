@@ -3,7 +3,7 @@ KeepTxt
 
 **Introduction**
 
-KeepTxt is a command line note taking app for systems with [GNU Bash](https://www.gnu.org/software/bash/). KeepTxt allows you to organize and store your notes, lists, images, and files with the speed and portability of the command line, all while using the text editor of your choice.
+KeepTxt is a command line note taking app. KeepTxt allows you to organize and store your notes, lists, images, and files with the speed and portability of the command line, all while using the text editor of your choice.
 
 **Installation**
 
