@@ -17,6 +17,8 @@ To install KeepTxt:
 
 Answer two questions and the installer creates a notebook in your home directory. You can change the notebook location and default editor in ~/.keeptxt/keeptxt.conf. Finally, move the keeptxt executable somewhere within your path if you don't install it for all users.
 
+**Usage**
+
 KeepTxt runs from the command line and calling it with one argument, a note name, edits the exisiting note or creates a new one. Run keeptxt -h to see the other options.
 
 **Productivity Tips**
