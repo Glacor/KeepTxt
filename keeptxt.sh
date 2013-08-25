@@ -115,6 +115,7 @@ attach()
     }
     cp -i "$file" "$notebook/$note/"
     echo "Attached $(basename $file) to note '$note'."
+    echo
     exit 0
 }
 
@@ -132,6 +133,7 @@ delete()
     }
     mv "$notebook/$note" $keeptxtConf/.Trash/
     echo "Deleted note '$note'."
+    echo
     exit 0
 }
 
@@ -146,9 +148,11 @@ empty()
     if [[ "$yorn" = 'y' || "$yorn" = 'Y' ]]; then
         rm -rf $keeptxtConf/.Trash/*
         echo "Trash emptied."
+        echo
         exit 0
     else
         echo "Trash not emptied."
+        echo
         exit 0
     fi
 }
@@ -163,6 +167,7 @@ grepNote()
     done
     echo
     echo "Search for '$string' complete."
+    echo
     exit 0
 }
 
@@ -189,6 +194,7 @@ list()
     done
     echo
     echo "Listing complete."
+    echo
     exit 0
 }
 
@@ -198,11 +204,13 @@ output()
     note="$1"
     [ -e "$notebook/$note/$note.txt" ] || {
         echo "Note not found... exiting."
+        echo
         exit 1
     }
     cat "$notebook/$note/$note.txt"
     echo
     echo "Output of note '$note' complete."
+    echo
     exit 0
 }
 
@@ -235,6 +243,7 @@ rename()
     cd "$notebook"
     [ -d "$note" ] || {
         echo "Note '$note' does not exist... exiting."
+        echo
         exit 1
     }
     read -p "What is the note's new name? " newName
@@ -243,6 +252,7 @@ rename()
     fi
     mv "$note" "$newName"
     echo "Note '$note' renamed to '$newName'."
+    echo
     exit 0
 }
 
@@ -268,20 +278,23 @@ save()
     cp -i "$attachLoc" "$chooseSaveloc"
     echo
     echo "Attachment $chooseAttach saved to $chooseSaveloc."
+    echo
     exit 0
 }
 
 xport()
 {
     header
-    [ -d "$notebook" ] || {
-        echo "Notebook not found... exiting."
+    [ -d "$nbkLoc" ] || {
+        echo "Notebook directory '$nbkLoc' not found... exiting."
+        echo
         exit 1
     }
     tarball="$nbkName-$shTime.tar.gz"
     cd "$nbkLoc"
     tar czf "$tarball" "$nbkName"
     echo "$nbkName exported to $tarball."
+    echo
     exit 0
 }
 
@@ -294,6 +307,7 @@ newEdit()
     if [ -e "$notebook/$note/$note.txt" ]; then
         nano "$notebook/$note/$note.txt"
         echo "Edited note '$note'."
+        echo
         exit 0
     fi
 
@@ -303,6 +317,7 @@ newEdit()
     }
     nano "$notebook/$note/$note.txt"
     echo "Created note '$note'."
+    echo
 }
 
 # Short help if no args
