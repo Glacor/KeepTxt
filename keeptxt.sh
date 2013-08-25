@@ -125,10 +125,12 @@ delete()
     note="$1"
     [ -d "$notebook/$note" ] || {
         echo "Note not found... exiting."
+        echo
         exit 1
     }
     [ -d $keeptxtConf/.Trash ] || {
         echo "Trash directory not found... exiting."
+        echo
         exit 1
     }
     mv "$notebook/$note" $keeptxtConf/.Trash/
@@ -142,6 +144,7 @@ empty()
     header
     [ -d $keeptxtConf/.Trash ] || {
         echo "Trash directory not found... exiting."
+        echo
         exit 1
     }
     read -p "Are you sure you want to empty the KeepTxt trash [y/n]? " yorn
