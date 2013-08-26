@@ -89,7 +89,7 @@ shortHelp()
 {
     echo
     echo "Usage: keeptxt [NOTE]"
-    echo "       keeptxt [-adehlopsx]"
+    echo "       keeptxt [-adeghloprsx]"
     echo
     options
 }
