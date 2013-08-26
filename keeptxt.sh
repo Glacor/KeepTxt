@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # KeepTxt - A command line note taking app
-# by dual
+# by dual (whenry)
 
 # Define KeepTxt conf directory
 keeptxtConf=$HOME/.keeptxt
