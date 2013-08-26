@@ -70,7 +70,7 @@ cat <<EndHelp
 KeepTxt is a command line note taking app.
 
 Usage: keeptxt [NOTE]
-       keeptxt [-adehlopsx]
+       keeptxt [-adeghloprsx]
 
 Run keeptxt with no options and a note name to create a new, or edit the
 existing, note. For example:
