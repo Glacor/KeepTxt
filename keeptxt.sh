@@ -30,7 +30,7 @@ keeptxtConf=$HOME/.keeptxt
 header()
 {
     echo
-    echo "Starting KeepTxt ( https://github.com/getdual/KeepTxt ) at $isoTime"
+    echo "Starting KeepTxt ( http://keeptxt.com ) at $isoTime"
     echo
 }
 
