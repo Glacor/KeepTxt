@@ -149,10 +149,23 @@ empty()
     }
     read -p "Are you sure you want to empty the KeepTxt trash [y/n]? " yorn
     if [[ "$yorn" = 'y' || "$yorn" = 'Y' ]]; then
-        rm -rf $keeptxtConf/.Trash/*
-        echo "Trash emptied."
-        echo
-        exit 0
+        if [ $secureEmpty = '1' ]; then
+            if [[ $(which srm) =~ 'srm' ]]; then
+                srm -rl $keeptxtConf/.Trash/*
+                echo "Trash securely emptied."
+                echo
+                exit 0
+            else
+                echo "secureEmpty set but srm not found... exiting."
+                echo
+                exit 1
+            fi
+        else
+            rm -rf $keeptxtConf/.Trash/*
+            echo "Trash emptied."
+            echo
+            exit 0
+        fi
     else
         echo "Trash not emptied."
         echo
