@@ -18,9 +18,9 @@ To install KeepTxt:
     ./install.sh
 
 Answer two questions and the installer creates a notebook in your home directory.
-You can change the notebook location and default editor in ~/.keeptxt/keeptxt.conf.
-Finally, move the keeptxt executable somewhere within your path if you don't install
-it for all users.
+You can change the notebook location, default editor, and whether to use secure
+empty in ~/.keeptxt/keeptxt.conf. Finally, move the keeptxt executable somewhere
+within your path if you don't install it for all users.
 
 **Usage**
 
@@ -38,6 +38,7 @@ Try these aliases for keeptxt in your ~/.bash_aliases file:
 
     alias kt='keeptxt'
     alias kl='keeptxt -l'
+    alias kto='keeptxt -o'
 
 Use KeepTxt's print function (-p) to create a hardcopy backup of all of your notes.
 
