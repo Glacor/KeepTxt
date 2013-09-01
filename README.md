@@ -55,6 +55,6 @@ in keeptxt.conf to the sync directory to have your notes on every device.
 KeepTxt is released under the [GPLv3 license](https://github.com/getdual/KeepTxt/blob/master/LICENSE).
 
 Thanks to Gina Trapani for the inspiration of [Todo.txt](http://todotxt.com/).
-Please contact [@keeptxt](https://twitter.com/keeptxt) with bugs and suggestions.
+Please contact [@KeepTxt](https://twitter.com/keeptxt) with bugs and suggestions.
 
 **- dual**
