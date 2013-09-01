@@ -97,7 +97,7 @@ shortHelp()
 attach()
 {
     header
-    file="$1"
+    local file="$1"
     currentDir=$(pwd)
     echo "Available Notes"
     echo "---------------"
@@ -122,7 +122,7 @@ attach()
 delete()
 {
     header
-    note="$1"
+    local note="$1"
     [ -d "$notebook/$note" ] || {
         echo "Note not found... exiting."
         echo
@@ -176,7 +176,7 @@ empty()
 grepNote()
 {
     header
-    string="$1"
+    local string="$1"
     cd "$notebook"
     for i in *; do
         grep "$string" "$i/$i.txt"
@@ -217,7 +217,7 @@ list()
 output()
 {
     header
-    note="$1"
+    local note="$1"
     [ -e "$notebook/$note/$note.txt" ] || {
         echo "Note not found... exiting."
         echo
@@ -255,7 +255,7 @@ print()
 rename()
 {
     header
-    note="$1"
+    local note="$1"
     cd "$notebook"
     [ -d "$note" ] || {
         echo "Note '$note' does not exist... exiting."
@@ -317,7 +317,7 @@ xport()
 newEdit()
 {
     header
-    note="$1"
+    local note="$1"
 
     # Edit existing note
     if [ -e "$notebook/$note/$note.txt" ]; then
