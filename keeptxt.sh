@@ -3,6 +3,8 @@
 # KeepTxt - A command line note taking app
 # by dual (whenry)
 
+Version='0.9'
+
 # Define KeepTxt conf directory
 keeptxtConf=$HOME/.keeptxt
 
@@ -57,6 +59,8 @@ cat <<EndOpts
       Rename a note
   -s
       Save an attachment from note to disk
+  -v
+      Display KeepTxt version
   -x
       Export notebook
 
@@ -70,7 +74,7 @@ cat <<EndHelp
 KeepTxt is a command line note taking app.
 
 Usage: kt [NOTE]
-       kt [-adeghloprsx]
+       kt [-adeghloprsvx]
 
 Run kt with no options and a note name to create a new, or edit the existing,
 note. For example:
@@ -90,7 +94,7 @@ shortHelp()
 {
     echo
     echo "Usage: kt [NOTE]"
-    echo "       kt [-adeghloprsx]"
+    echo "       kt [-adeghloprsvx]"
     echo
     options
 }
@@ -299,6 +303,14 @@ save()
     exit 0
 }
 
+version()
+{
+    echo
+    echo "KeepTxt version $Version ( http://keeptxt.com )"
+    echo
+    exit 0
+}
+
 xport()
 {
     header
@@ -343,7 +355,7 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-while getopts ":a:d:eg:hlo:pr:sx" opt; do
+while getopts ":a:d:eg:hlo:pr:svx" opt; do
     case $opt in
         a ) attach "$OPTARG";;
         d ) delete "$OPTARG";;
@@ -356,13 +368,14 @@ while getopts ":a:d:eg:hlo:pr:sx" opt; do
         p ) print;;
         r ) rename "$OPTARG";;
         s ) save;;
+        v ) version;;
         x ) xport;;
-        \? ) echo "Invalid option: -$OPTARG"
-            echo
+        \? ) echo
+            echo "Invalid option: -$OPTARG"
             shortHelp
             exit 1;;
-        : ) echo "Option -$OPTARG requires an argument."
-            echo
+        : ) echo
+            echo "Option -$OPTARG requires an argument."
             shortHelp
             exit 1;;
     esac
