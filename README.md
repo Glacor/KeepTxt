@@ -25,24 +25,24 @@ within your path if you don't install it for all users.
 **Usage**
 
 KeepTxt runs from the command line and calling it with one argument, a note name,
-edits the exisiting note or creates a new one.
+edits an exisiting note or creates a new note of that name. And KeepTxt supports
+tab completion so you don't have to type the whole note name once it exists.
 
-    keeptxt todo
-    keeptxt "Army List"
+    kt todo
+    kt "Army List"
 
-Run keeptxt -h to see the other options.
+Run kt -h to see the other options.
 
 **Productivity Tips**
 
 Try these aliases for keeptxt in your ~/.bash_aliases file:
 
-    alias kt='keeptxt'
-    alias kl='keeptxt -l'
-    alias kto='keeptxt -o'
+    alias kl='kt -l'
+    alias kto='kt -o'
 
 Use KeepTxt's print function (-p) to create a hardcopy backup of all of your notes.
 
-    keeptxt -p | lp
+    kt -p | lp
 
 If you use cloud storage syncing, like Ubuntu One for example, set your nbkLoc
 in keeptxt.conf to the sync directory to have your notes on every device.

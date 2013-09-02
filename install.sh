@@ -3,8 +3,8 @@
 # install.sh - KeepTxt install script
 
 # Define default install locations
-usrLocal=/usr/local/bin/keeptxt
-home=$HOME/keeptxt
+usrLocal=/usr/local/bin/kt
+home=$HOME/kt
 conf=$HOME/.keeptxt
 
 echo "Install script for KeepTxt, a command line note taking app"
@@ -52,13 +52,13 @@ echo >> $HOME/.bashrc
 echo '# Source keeptxt.conf' >> $HOME/.bashrc
 echo '. $HOME/.keeptxt/keeptxt.conf' >> $HOME/.bashrc
 echo >> $HOME/.bashrc
-echo '# Create tab completion for keeptxt' >> $HOME/.bashrc
-echo '_keeptxt()' >> $HOME/.bashrc
+echo '# Create tab completion for kt' >> $HOME/.bashrc
+echo '_kt()' >> $HOME/.bashrc
 echo '{' >> $HOME/.bashrc
 echo '    local cur=${COMP_WORDS[COMP_CWORD]}' >> $HOME/.bashrc
 echo '    COMPREPLY=( $(compgen -W "$(cd "$notebook"; ls)" -- $cur) )' >> $HOME/.bashrc
 echo '}' >> $HOME/.bashrc
-echo 'complete -F _keeptxt keeptxt' >> $HOME/.bashrc
+echo 'complete -F _kt kt' >> $HOME/.bashrc
 echo >> $HOME/.bashrc
 echo '# Added by KeepTxt install.sh' >> $HOME/.bashrc
 echo '#############################' >> $HOME/.bashrc
