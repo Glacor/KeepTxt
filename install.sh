@@ -45,25 +45,23 @@ if [[ "$ynEmpty" = 'y' || "$yorn" = 'Y' ]]; then
 fi
 
 echo "Installing tab completion..."
-cat << EndTab >> $HOME/.bashrc
-
-#############################
-# Added by KeepTxt install.sh
-
-# Source keeptxt.conf
-. $HOME/.keeptxt/keeptxt.conf
-
-# Create tab completion for keeptxt
-_keeptxt()
-{
-    local cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( $(compgen -W "$(cd "$notebook"; ls)" -- $cur) )
-}
-complete -F _keeptxt keeptxt
-
-# Added by KeepTxt install.sh
-#############################
-EndTab
+echo >> $HOME/.bashrc
+echo '#############################' >> $HOME/.bashrc
+echo '# Added by KeepTxt install.sh' >> $HOME/.bashrc
+echo >> $HOME/.bashrc
+echo '# Source keeptxt.conf' >> $HOME/.bashrc
+echo '. $HOME/.keeptxt/keeptxt.conf' >> $HOME/.bashrc
+echo >> $HOME/.bashrc
+echo '# Create tab completion for keeptxt' >> $HOME/.bashrc
+echo '_keeptxt()' >> $HOME/.bashrc
+echo '{' >> $HOME/.bashrc
+echo '    local cur=${COMP_WORDS[COMP_CWORD]}' >> $HOME/.bashrc
+echo '    COMPREPLY=( $(compgen -W "$(cd "$notebook"; ls)" -- $cur) )' >> $HOME/.bashrc
+echo '}' >> $HOME/.bashrc
+echo 'complete -F _keeptxt keeptxt' >> $HOME/.bashrc
+echo >> $HOME/.bashrc
+echo '# Added by KeepTxt install.sh' >> $HOME/.bashrc
+echo '#############################' >> $HOME/.bashrc
 echo "  Open a new shell or '. .bashrc' to enable tab completion."
 
 echo "Creating notebook '$HOME/$nbkName'..."
