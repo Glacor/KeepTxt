@@ -72,12 +72,13 @@ KeepTxt is a command line note taking app.
 Usage: kt [NOTE]
        kt [-adeghloprsx]
 
-Run keeptxt with no options and a note name to create a new, or edit the
-existing, note. For example:
+Run kt with no options and a note name to create a new, or edit the existing,
+note. For example:
 
   kt todo
   kt "Army List"
 
+KeepTxt supports tab completion so you don't have to type the entire note name.
 Use the following options to act upon notes and attachments.
 
 EndHelp
@@ -88,8 +89,8 @@ options
 shortHelp()
 {
     echo
-    echo "Usage: keeptxt [NOTE]"
-    echo "       keeptxt [-adeghloprsx]"
+    echo "Usage: kt [NOTE]"
+    echo "       kt [-adeghloprsx]"
     echo
     options
 }
