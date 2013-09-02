@@ -17,10 +17,10 @@ To install KeepTxt:
     chmod +x install.sh
     ./install.sh
 
-Answer two questions and the installer creates a notebook in your home directory.
-You can change the notebook location, default editor, and whether to use secure
-empty in ~/.keeptxt/keeptxt.conf. Finally, move the keeptxt executable somewhere
-within your path if you don't install it for all users.
+Answer three questions and the installer creates a notebook in your home
+directory. You can change the notebook location, default editor, and whether to
+use secure empty in ~/.keeptxt/keeptxt.conf. Finally, move the kt executable
+somewhere within your path if you don't install it for all users.
 
 **Usage**
 
