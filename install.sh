@@ -19,13 +19,13 @@ fi
 
 read -p "Install KeepTxt for all users [y/n]? " ynInstall
 if [[ "$ynInstall" = 'y' || "$ynInstall" = 'Y' ]]; then
-    echo "Installing keeptxt to /usr/local/bin..."
+    echo "Installing kt to /usr/local/bin..."
     sudo cp keeptxt.sh $usrLocal
     sudo chown root:root $usrLocal
     sudo chmod 755 $usrLocal
 else
-    echo "Installing keeptxt to $HOME..."
-    echo "  Place the keeptxt executable somewhere in your \$PATH."
+    echo "Installing kt to $HOME..."
+    echo "  Place the kt executable somewhere in your \$PATH."
     cp keeptxt.sh $home
     chmod 700 $home
 fi
@@ -38,7 +38,7 @@ sed -i "s/NBKNAME/$nbkName/" $conf/keeptxt.conf
 cp iso8601 $conf/
 
 read -p "Enable secure empty of KeepTxt trash [y/n]? " ynEmpty
-if [[ "$ynEmpty" = 'y' || "$yorn" = 'Y' ]]; then
+if [[ "$ynEmpty" = 'y' || "$ynEmpty" = 'Y' ]]; then
     echo "Enabling secure empty..."
     echo "  Make sure the srm command is installed."
     sed -i "s/secureEmpty=0/secureEmpty=1/" $conf/keeptxt.conf

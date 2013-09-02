@@ -157,7 +157,7 @@ empty()
                 echo
                 exit 0
             else
-                echo "secureEmpty set but srm not found... exiting."
+                echo "Secure empty set but srm not found... exiting."
                 echo
                 exit 1
             fi
