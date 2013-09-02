@@ -35,10 +35,9 @@ Run kt -h to see the other options.
 
 **Productivity Tips**
 
-Try these aliases for keeptxt in your ~/.bash_aliases file:
+Try this alias in your ~/.bash_aliases to quickly list your notes:
 
     alias kl='kt -l'
-    alias kto='kt -o'
 
 Use KeepTxt's print function (-p) to create a hardcopy backup of all of your notes.
 
