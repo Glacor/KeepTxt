@@ -341,7 +341,7 @@ newEdit()
 
     # Edit existing note
     if [ -e "$notebook/$note/$note.txt" ]; then
-        nano "$notebook/$note/$note.txt"
+        $EDITOR "$notebook/$note/$note.txt"
         echo "Edited note '$note'."
         echo
         exit 0
@@ -351,7 +351,7 @@ newEdit()
     [ -d "$notebook/$note" ] || {
         mkdir "$notebook/$note"
     }
-    nano "$notebook/$note/$note.txt"
+    $EDITOR "$notebook/$note/$note.txt"
     echo "Created note '$note'."
     echo
 }
