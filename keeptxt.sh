@@ -3,7 +3,10 @@
 # KeepTxt - A command line note taking app
 # by dual (whenry)
 
-Version='0.9'
+# Handle empty notebook gracefully
+shopt -s nullglob
+
+Version='0.91'
 
 # Define KeepTxt conf directory
 keeptxtConf=$HOME/.keeptxt
@@ -138,7 +141,11 @@ delete()
         echo
         exit 1
     }
-    mv "$notebook/$note" $keeptxtConf/.Trash/
+    if [ -d "$keeptxtConf/.Trash/$note" ]; then
+        mv "$notebook/$note" "$keeptxtConf/.Trash/$note-1"
+    else
+        mv "$notebook/$note" $keeptxtConf/.Trash/
+    fi
     echo "Deleted note '$note'."
     echo
     exit 0
