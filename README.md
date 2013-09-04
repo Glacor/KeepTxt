@@ -49,6 +49,20 @@ in keeptxt.conf to the sync directory to have your notes on every device.
     # Define notebook location
     nbkLoc="$HOME/Ubuntu One"    
 
+**Cygwin Support**
+
+KeepTxt was tested and runs under Cygwin. Install your choice of editor, wget,
+and unzip. Then installation is almost identical.
+
+    wget --no-check-certificate https://github.com/getdual/KeepTxt/archive/master.zip
+    unzip master.zip
+    cd KeepTxt-master
+    chmod +x install.sh
+    ./install.sh
+
+Note the secure empty option is not supported on Cygwin. Otherwise KeepTxt runs
+the same as on Linux.
+
 **License**
 
 KeepTxt is released under the [GPLv3 license](https://github.com/getdual/KeepTxt/blob/master/LICENSE).
