@@ -35,11 +35,10 @@ Run kt -h to see the other options.
 
 **Productivity Tips**
 
-Try these aliases in your ~/.bash_aliases to quickly list your notes and
-attachments and output a note:
+Try this alias in your ~/.bash_aliases to quickly list your notes and
+attachments:
 
     alias kl='kt -l'
-    alias ko='kt -o'
 
 Use KeepTxt's print function (-p) to create a hardcopy backup of all of your notes.
 
