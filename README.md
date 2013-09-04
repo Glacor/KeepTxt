@@ -35,7 +35,7 @@ Run kt -h to see the other options.
 
 **Productivity Tips**
 
-Try this alias in your ~/.bash_aliases to quickly list your notes:
+Try this alias in your ~/.bash_aliases to quickly list your notes and attachments:
 
     alias kl='kt -l'
 
