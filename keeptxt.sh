@@ -291,8 +291,9 @@ save()
     echo "-----------"
     declare -A attachments
     attachCount=1
-    for i in $(ls "$notebook"); do
-        for j in $(ls --hide="$i.txt" "$notebook/$i"); do
+    cd "$notebook"
+    for i in *; do
+        for j in $(ls --hide="$i.txt" "$i"); do
             k="$i/$j"
             attachments[$attachCount]="$k"
             echo "$attachCount: $k"
