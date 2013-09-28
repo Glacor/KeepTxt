@@ -52,7 +52,7 @@ in keeptxt.conf to the sync directory to have your notes on every device.
 
 **Cygwin Support**
 
-KeepTxt was tested and runs under (Cygwin)[http://cygwin.com/]. Install your
+KeepTxt was tested and runs under [Cygwin](http://cygwin.com/). Install your
 choice of editor, wget, and unzip when you install Cygwin. KeepTxt installation
 under Cygwin is almost identical to Linux.
 
