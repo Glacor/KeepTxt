@@ -44,8 +44,9 @@ Use KeepTxt's print function (-p) to create a hardcopy backup of all of your not
 
     kt -p | lp
 
-If you use cloud storage syncing, like Ubuntu One for example, set your nbkLoc
-in keeptxt.conf to the sync directory to have your notes on every device.
+If you use cloud storage syncing, like [Ubuntu One](https://one.ubuntu.com/) for
+example, set your nbkLoc in keeptxt.conf to the sync directory to have your
+notes on every device.
 
     # Define notebook location
     nbkLoc="$HOME/Ubuntu One"    
