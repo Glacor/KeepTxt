@@ -32,15 +32,13 @@ keeptxtConf=$HOME/.keeptxt
 }
 
 # Functions
-header()
-{
+header() {
     echo
     echo "Starting KeepTxt ( http://keeptxt.com ) at $isoTime"
     echo
 }
 
-options()
-{
+options() {
 cat <<EndOpts
   -a FILE
       Attach a file to a note
@@ -70,8 +68,7 @@ cat <<EndOpts
 EndOpts
 }
 
-longHelp()
-{
+longHelp() {
 cat <<EndHelp
 
 KeepTxt is a command line note taking app.
@@ -93,8 +90,7 @@ EndHelp
 options
 }
 
-shortHelp()
-{
+shortHelp() {
     echo
     echo "Usage: kt [NOTE]"
     echo "       kt [-adeghloprsvx]"
@@ -102,8 +98,7 @@ shortHelp()
     options
 }
 
-attach()
-{
+attach() {
     header
     local file="$1"
     currentDir=$(pwd)
@@ -127,8 +122,7 @@ attach()
     exit 0
 }
 
-delete()
-{
+delete() {
     header
     local note="$1"
     [ -d "$notebook/$note" ] || {
@@ -151,8 +145,7 @@ delete()
     exit 0
 }
 
-empty()
-{
+empty() {
     header
     [ -d $keeptxtConf/.Trash ] || {
         echo "Trash directory not found... exiting."
@@ -185,8 +178,7 @@ empty()
     fi
 }
 
-grepNote()
-{
+grepNote() {
     header
     local string="$1"
     cd "$notebook"
@@ -199,8 +191,7 @@ grepNote()
     exit 0
 }
 
-list()
-{
+list() {
     header
     cd "$notebook"
     echo "Notes"
@@ -226,8 +217,7 @@ list()
     exit 0
 }
 
-output()
-{
+output() {
     header
     local note="$1"
     [ -e "$notebook/$note/$note.txt" ] || {
@@ -242,8 +232,7 @@ output()
     exit 0
 }
 
-print()
-{
+print() {
     echo
     echo
     cd "$notebook"
@@ -264,8 +253,7 @@ print()
     exit 0
 }
 
-rename()
-{
+rename() {
     header
     local note="$1"
     cd "$notebook"
@@ -284,8 +272,7 @@ rename()
     exit 0
 }
 
-save()
-{
+save() {
     header
     echo "Attachments"
     echo "-----------"
@@ -311,16 +298,14 @@ save()
     exit 0
 }
 
-version()
-{
+version() {
     echo
     echo "KeepTxt version $Version ( http://keeptxt.com )"
     echo
     exit 0
 }
 
-xport()
-{
+xport() {
     header
     [ -d "$nbkLoc" ] || {
         echo "Notebook directory '$nbkLoc' not found... exiting."
@@ -335,8 +320,7 @@ xport()
     exit 0
 }
 
-newEdit()
-{
+newEdit() {
     header
     local note="$1"
 
