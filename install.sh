@@ -59,4 +59,4 @@ echo "Creating notebook '$HOME/$nbkName'..."
 mkdir "$HOME/$nbkName"
 
 echo
-echo "Done."
+echo "Complete"
