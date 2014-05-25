@@ -3,7 +3,6 @@
 # install.sh - KeepTxt install script
 
 # Define default install locations
-usrLocal=/usr/local/bin/kt
 home="$HOME/kt"
 conf="$HOME/.keeptxt"
 rcfile="$rcfile"
