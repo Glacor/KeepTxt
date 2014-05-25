@@ -4,10 +4,11 @@
 
 # Define default install locations
 usrLocal=/usr/local/bin/kt
-home=$HOME/kt
-conf=$HOME/.keeptxt
+home="$HOME/kt"
+conf="$HOME/.keeptxt"
+rcfile="$rcfile"
 
-echo "Install script for KeepTxt, a command line note taking app"
+echo "Installing KeepTxt, a command line note taking app"
 echo
 
 read -p "What's the name of your notebook [default: KeepTxt]? " namePrompt
@@ -17,18 +18,9 @@ else
     nbkName="$namePrompt"
 fi
 
-read -p "Install KeepTxt for all users [y/n]? " ynInstall
-if [[ "$ynInstall" = 'y' || "$ynInstall" = 'Y' ]]; then
-    echo "Installing kt to /usr/local/bin..."
-    sudo cp keeptxt.sh $usrLocal
-    sudo chown root:root $usrLocal
-    sudo chmod 755 $usrLocal
-else
-    echo "Installing kt to $HOME..."
-    echo "  Place the kt executable somewhere in your \$PATH."
-    cp keeptxt.sh $home
-    chmod 700 $home
-fi
+echo "Installing kt to $HOME..."
+cp keeptxt.sh $home
+chmod 700 $home
 
 echo "Installing conf files..."
 mkdir $conf
@@ -45,23 +37,23 @@ if [[ "$ynEmpty" = 'y' || "$ynEmpty" = 'Y' ]]; then
 fi
 
 echo "Installing tab completion..."
-echo >> $HOME/.bashrc
-echo '#############################' >> $HOME/.bashrc
-echo '# Added by KeepTxt install.sh' >> $HOME/.bashrc
-echo >> $HOME/.bashrc
-echo '# Source keeptxt.conf' >> $HOME/.bashrc
-echo '. $HOME/.keeptxt/keeptxt.conf' >> $HOME/.bashrc
-echo >> $HOME/.bashrc
-echo '# Create tab completion for kt' >> $HOME/.bashrc
-echo '_kt()' >> $HOME/.bashrc
-echo '{' >> $HOME/.bashrc
-echo '    local cur=${COMP_WORDS[COMP_CWORD]}' >> $HOME/.bashrc
-echo '    COMPREPLY=( $(compgen -W "$(cd "$notebook"; ls)" -- $cur) )' >> $HOME/.bashrc
-echo '}' >> $HOME/.bashrc
-echo 'complete -F _kt kt' >> $HOME/.bashrc
-echo >> $HOME/.bashrc
-echo '# Added by KeepTxt install.sh' >> $HOME/.bashrc
-echo '#############################' >> $HOME/.bashrc
+echo >> $rcfile
+echo '#############################' >> $rcfile
+echo '# Added by KeepTxt install.sh' >> $rcfile
+echo >> $rcfile
+echo '# Source keeptxt.conf' >> $rcfile
+echo '. $HOME/.keeptxt/keeptxt.conf' >> $rcfile
+echo >> $rcfile
+echo '# Create tab completion for kt' >> $rcfile
+echo '_kt()' >> $rcfile
+echo '{' >> $rcfile
+echo '    local cur=${COMP_WORDS[COMP_CWORD]}' >> $rcfile
+echo '    COMPREPLY=( $(compgen -W "$(cd "$notebook"; ls)" -- $cur) )' >> $rcfile
+echo '}' >> $rcfile
+echo 'complete -F _kt kt' >> $rcfile
+echo >> $rcfile
+echo '# Added by KeepTxt install.sh' >> $rcfile
+echo '#############################' >> $rcfile
 echo "  Open a new shell or '. .bashrc' to enable tab completion."
 
 echo "Creating notebook '$HOME/$nbkName'..."
