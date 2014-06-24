@@ -13,12 +13,12 @@ keeptxtConf=$HOME/.keeptxt
 
 # Source iso8601 and keeptxt.conf
 [ -e $keeptxtConf/iso8601 ] || {
-    echo "$keeptxtConf/iso8601 not found... exiting."
+    echo "$keeptxtConf/iso8601 not found... exiting"
     exit 1
 }
 
 [ -e $keeptxtConf/keeptxt.conf ] || {
-    echo "$keeptxtConf/keeptxt.conf not found... exiting."
+    echo "$keeptxtConf/keeptxt.conf not found... exiting"
     exit 1
 }
 
@@ -27,7 +27,7 @@ keeptxtConf=$HOME/.keeptxt
 
 # Check that notebook exists
 [ -d "$notebook" ] || {
-    echo "Default notebook $notebook not found... exiting."
+    echo "Default notebook $notebook not found... exiting"
     exit 1
 }
 
@@ -113,11 +113,11 @@ attach() {
     read -p "Which note do you want to attach the file to? " noteWquotes
     note=$(echo "$noteWquotes" | sed 's/"//g')
     [ -d "$notebook/$note" ] || {
-        echo "Note '$note' not found... exiting."
+        echo "Note '$note' not found... exiting"
         exit 1
     }
     cp -i "$file" "$notebook/$note/"
-    echo "Attached $(basename $file) to note '$note'."
+    echo "Attached $(basename $file) to note '$note'"
     echo
     exit 0
 }
@@ -126,12 +126,12 @@ delete() {
     header
     local note="$1"
     [ -d "$notebook/$note" ] || {
-        echo "Note not found... exiting."
+        echo "Note not found... exiting"
         echo
         exit 1
     }
     [ -d $keeptxtConf/.Trash ] || {
-        echo "Trash directory not found... exiting."
+        echo "Trash directory not found... exiting"
         echo
         exit 1
     }
@@ -140,7 +140,7 @@ delete() {
     else
         mv "$notebook/$note" $keeptxtConf/.Trash/
     fi
-    echo "Deleted note '$note'."
+    echo "Deleted note '$note'"
     echo
     exit 0
 }
@@ -148,7 +148,7 @@ delete() {
 empty() {
     header
     [ -d $keeptxtConf/.Trash ] || {
-        echo "Trash directory not found... exiting."
+        echo "Trash directory not found... exiting"
         echo
         exit 1
     }
@@ -161,18 +161,18 @@ empty() {
                 echo
                 exit 0
             else
-                echo "Secure empty set but srm not found... exiting."
+                echo "Secure empty set but srm not found... exiting"
                 echo
                 exit 1
             fi
         else
             rm -rf $keeptxtConf/.Trash/*
-            echo "Trash emptied."
+            echo "Trash emptied"
             echo
             exit 0
         fi
     else
-        echo "Trash not emptied."
+        echo "Trash not emptied"
         echo
         exit 0
     fi
@@ -186,7 +186,7 @@ grepNote() {
         grep "$string" "$i/$i.txt"
     done
     echo
-    echo "Search for '$string' complete."
+    echo "Search for '$string' complete"
     echo
     exit 0
 }
@@ -212,7 +212,7 @@ list() {
         done
     done
     echo
-    echo "Listing complete."
+    echo "Listing complete"
     echo
     exit 0
 }
@@ -221,13 +221,13 @@ output() {
     header
     local note="$1"
     [ -e "$notebook/$note/$note.txt" ] || {
-        echo "Note not found... exiting."
+        echo "Note not found... exiting"
         echo
         exit 1
     }
     cat "$notebook/$note/$note.txt"
     echo
-    echo "Output of note '$note' complete."
+    echo "Output of note '$note' complete"
     echo
     exit 0
 }
@@ -241,7 +241,7 @@ print() {
         if [ -e "$notebook/$i/$i.txt" ]; then
             cat "$notebook/$i/$i.txt"
         else
-            echo "Note '$i.txt' not found."
+            echo "Note '$i.txt' not found"
         fi
         echo
         echo "Attachments"
@@ -258,7 +258,7 @@ rename() {
     local note="$1"
     cd "$notebook"
     [ -d "$note" ] || {
-        echo "Note '$note' does not exist... exiting."
+        echo "Note '$note' does not exist... exiting"
         echo
         exit 1
     }
@@ -267,7 +267,7 @@ rename() {
         mv -i "$note/$note.txt" "$note/$newName.txt"
     fi
     mv "$note" "$newName"
-    echo "Note '$note' renamed to '$newName'."
+    echo "Note '$note' renamed to '$newName'"
     echo
     exit 0
 }
@@ -293,7 +293,7 @@ save() {
     read -p "Where would you like to save the attachment? " chooseSaveloc
     cp -i "$attachLoc" "$chooseSaveloc"
     echo
-    echo "Attachment $chooseAttach saved to $chooseSaveloc."
+    echo "Attachment $chooseAttach saved to $chooseSaveloc"
     echo
     exit 0
 }
@@ -308,14 +308,14 @@ version() {
 xport() {
     header
     [ -d "$nbkLoc" ] || {
-        echo "Notebook directory '$nbkLoc' not found... exiting."
+        echo "Notebook directory '$nbkLoc' not found... exiting"
         echo
         exit 1
     }
     tarball="$nbkName-$shTime.tar.gz"
     cd "$nbkLoc"
     tar czf "$tarball" "$nbkName"
-    echo "$nbkName exported to $tarball."
+    echo "$nbkName exported to $tarball"
     echo
     exit 0
 }
@@ -327,7 +327,7 @@ newEdit() {
     # Edit existing note
     if [ -e "$notebook/$note/$note.txt" ]; then
         $EDITOR "$notebook/$note/$note.txt"
-        echo "Edited note '$note'."
+        echo "Edited note '$note'"
         echo
         exit 0
     fi
@@ -367,7 +367,7 @@ while getopts ":a:d:eg:hlo:pr:svx" opt; do
             shortHelp
             exit 1;;
         : ) echo
-            echo "Option -$OPTARG requires an argument."
+            echo "Option -$OPTARG requires an argument"
             shortHelp
             exit 1;;
     esac
