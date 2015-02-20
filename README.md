@@ -65,12 +65,3 @@ under Cygwin is almost identical to Linux.
 
 Note the secure empty option is not supported on Cygwin. Otherwise KeepTxt runs
 the same as on Linux.
-
-**License**
-
-KeepTxt is released under the [GPLv3 license](https://github.com/getdual/KeepTxt/blob/master/LICENSE).
-
-Thanks to Gina Trapani for the inspiration of [Todo.txt](http://todotxt.com/).
-Please contact [@KeepTxt](https://twitter.com/KeepTxt) with bugs and suggestions.
-
-**- dual**
