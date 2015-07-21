@@ -11,7 +11,7 @@ command line, all while using the text editor of your choice.
 
 To install KeepTxt:
 
-    wget https://github.com/getdual/KeepTxt/archive/master.zip
+    wget https://github.com/WSTNPHX/KeepTxt/archive/master.zip
     unzip master.zip
     cd KeepTxt-master
     chmod +x install.sh
@@ -44,12 +44,11 @@ Use KeepTxt's print function (-p) to create a hardcopy backup of all of your not
 
     kt -p | lp
 
-If you use cloud storage syncing, like [Ubuntu One](https://one.ubuntu.com/) for
-example, set your nbkLoc in keeptxt.conf to the sync directory to have your
-notes on every device.
+If you use cloud storage syncing, set nbkLoc in keeptxt.conf to the synced directory
+to have your notes on every device.
 
     # Define notebook location
-    nbkLoc="$HOME/Ubuntu One"    
+    nbkLoc="$HOME/Dropbox"    
 
 **Cygwin Support**
 
@@ -57,7 +56,7 @@ KeepTxt was tested and runs under [Cygwin](http://cygwin.com/). Install your
 choice of editor, wget, and unzip when you install Cygwin. KeepTxt installation
 under Cygwin is almost identical to Linux.
 
-    wget --no-check-certificate https://github.com/getdual/KeepTxt/archive/master.zip
+    wget --no-check-certificate https://github.com/WSTNPHX/KeepTxt/archive/master.zip
     unzip master.zip
     cd KeepTxt-master
     chmod +x install.sh
